@@ -1,6 +1,7 @@
 import { supabaseServer } from "@/lib/supabase/serverClient";
 import { redirect } from "next/navigation";
 import LogoutButton from "./LogoutButton";
+import ThemeToggle from "./ThemeToggle";
 
 export default async function Navbar() {
   const supabase = await supabaseServer();
@@ -18,6 +19,8 @@ export default async function Navbar() {
       <h1 className="text-lg font-semibold">KNOT - Smart Bookmarks</h1>
 
       <div className="flex items-center gap-4">
+        <ThemeToggle />
+
         <span className="text-sm text-gray-400">{user.email}</span>
 
         <img
