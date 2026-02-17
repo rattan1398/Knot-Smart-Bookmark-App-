@@ -9,9 +9,28 @@ export async function addBookmark(formData: FormData) {
 
   const supabase = await supabaseServer()
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  if (!user) {
+    throw new Error('Unauthorized')
+  }
+
+  const { data: existingBookmark } = await supabase
+    .from('bookmarks')
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('title', title)
+    .single()
+
+  if (existingBookmark) {
+    throw new Error('A bookmark with this title already exists.')
+  }
+
   const { error } = await supabase
     .from('bookmarks')
-    .insert([{ title, url }])
+    .insert([{ title, url, user_id: user.id }])
 
   if (error) {
     throw new Error(error.message)

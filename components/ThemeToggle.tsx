@@ -18,9 +18,16 @@ export default function ThemeToggle() {
       onClick={() =>
         setTheme(theme === 'dark' ? 'light' : 'dark')
       }
-      className="text-sm border px-3 py-1 rounded"
+      className="p-2 dark:bg-white rounded-full hover:bg-gray-100 dark:hover:bg-gray-300 transition-colors cursor-pointer"
+      aria-label="Toggle theme"
     >
-      {theme === 'dark' ? 'Light' : 'Dark'}
+      <img 
+        src={theme === 'dark' ? 'https://ik.imagekit.io/rattankartik708/light.png' : 'https://ik.imagekit.io/rattankartik708/dark.png'}
+        alt="Toggle Theme"
+        width={24}
+        height={24}
+        className="w-6 h-6 object-contain"
+      />
     </button>
   )
 }

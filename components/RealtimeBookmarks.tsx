@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/browserClient";
 import { Bookmark } from "@/types/bookmark";
 import { deleteBookmark } from "@/app/actions/bookmark";
@@ -12,8 +13,19 @@ export default function RealtimeBookmarks({
   initialBookmarks: Bookmark[];
 }) {
   const [bookmarks, setBookmarks] = useState(initialBookmarks);
+  const searchParams = useSearchParams();
+  const query = searchParams.get('query')?.toLowerCase() || '';
+
+  const filteredBookmarks = bookmarks.filter(b => 
+    b.title.toLowerCase().includes(query) || 
+    b.url.toLowerCase().includes(query)
+  );
   const addOptimistic = (bookmark: Bookmark) => {
     setBookmarks((prev) => [bookmark, ...prev]);
+  };
+
+  const removeOptimistic = (id: string) => {
+    setBookmarks((prev) => prev.filter((b) => b.id !== id));
   };
 
   useEffect(() => {
@@ -56,23 +68,27 @@ export default function RealtimeBookmarks({
 
   return (
     <div className="space-y-3">
-      <AddBookmark onAdd={addOptimistic} />
-      {bookmarks.length === 0 ? (
+      <AddBookmark onAdd={addOptimistic} onRemove={removeOptimistic} />
+      {filteredBookmarks.length === 0 ? (
         <div className="text-center mt-24 text-gray-400">
-          <p className="text-xl font-medium">No bookmarks yet</p>
-          <p className="text-sm mt-2">
-            Add your first bookmark to get started 🚀
+          <p className="text-xl font-medium">
+            {query ? 'No bookmarks found' : 'No bookmarks yet'}
           </p>
+          {!query && (
+            <p className="text-sm mt-2">
+              Add your first bookmark to get started 🚀
+            </p>
+          )}
         </div>
       ) : (
-        bookmarks.map((bm) => (
+        filteredBookmarks.map((bm) => (
           <div key={bm.id} className="flex justify-between border p-3 rounded">
             <a href={bm.url} target="_blank">
               {bm.title}
             </a>
 
             <form action={deleteBookmark.bind(null, bm.id)}>
-              <button className="text-red-500">Delete</button>
+              <button className="text-red-500 cursor-pointer">Delete</button>
             </form>
           </div>
         ))
