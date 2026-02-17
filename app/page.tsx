@@ -128,6 +128,10 @@ export default function LandingPage() {
                 <span className="text-4xl group-hover:scale-110 transition-transform">📘</span>
                 <span className="font-semibold text-sm">TypeScript</span>
              </div>
+             <div className="flex flex-col items-center gap-2 group">
+                <span className="text-4xl group-hover:scale-110 transition-transform">☁️</span>
+                <span className="font-semibold text-sm">ImageKit</span>
+             </div>
           </div>
         </div>
       </section>
