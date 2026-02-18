@@ -14,7 +14,7 @@ export default function RealtimeBookmarks({
 }) {
   const [bookmarks, setBookmarks] = useState(initialBookmarks);
   const searchParams = useSearchParams();
-  const query = searchParams.get('query')?.toLowerCase() || '';
+  const query = searchParams.get('query')?.trim().toLowerCase() || '';
 
   const filteredBookmarks = bookmarks.filter(b => 
     b.title.toLowerCase().includes(query) || 

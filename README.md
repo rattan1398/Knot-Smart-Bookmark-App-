@@ -54,9 +54,7 @@ The system is built to handle significant load increases without requiring funda
 ### Future Roadmap
 Development is focused on enhancing intelligence and system interoperability.
 *   **AI-Powered Categorization:** Automated tagging and folder organization using LLMs to analyze page content.
-*   **Semantic Search:** Vector embeddings for natural language search capabilities beyond simple keyword matching.
 *   **Collaborative Collections:** Shared workspaces with granular permission controls for team-based research.
-*   **Offline Capability:** Progressive Web App (PWA) features with local-first database synchronization.
 *   **Browser Extension:** Seamless integration for capturing links directly from the browsing context.
 *   **Usage Analytics:** Insights into reading habits and domain frequency.
 
