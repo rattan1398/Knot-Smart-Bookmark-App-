@@ -60,14 +60,14 @@ export default function AddBookmark({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
       <input
         name="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Title"
         required
-        className="border p-2 rounded"
+        className="border p-2 rounded w-full sm:w-auto"
       />
       <input
         name="url"
@@ -75,9 +75,9 @@ export default function AddBookmark({
         onChange={(e) => setUrl(e.target.value)}
         placeholder="https://..."
         required
-        className="border p-2 rounded flex-1"
+        className="border p-2 rounded flex-1 w-full"
       />
-      <button className="bg-indigo-500 text-white px-4 rounded cursor-pointer">
+      <button className="bg-indigo-500 text-white px-4 py-2 sm:py-0 rounded cursor-pointer w-full sm:w-auto hover:bg-indigo-600 transition-colors">
         Add
       </button>
     </form>

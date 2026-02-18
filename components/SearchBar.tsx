@@ -3,7 +3,7 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function SearchBar() {
+export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -36,6 +36,7 @@ export default function SearchBar() {
         placeholder="Search bookmarks..."
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams.get("query")?.toString()}
+        autoFocus={autoFocus}
       />
     </div>
   );

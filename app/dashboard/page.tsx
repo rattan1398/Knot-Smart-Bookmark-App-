@@ -17,7 +17,7 @@ export default async function Dashboard() {
     .order("created_at", { ascending: false });
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 space-y-6">
+    <div className="max-w-2xl mx-auto mt-10 space-y-6 px-4">
       <RealtimeBookmarks initialBookmarks={bookmarks || []} />
     </div>
   );
