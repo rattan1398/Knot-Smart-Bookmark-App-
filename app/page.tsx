@@ -2,7 +2,6 @@
 
 import { supabaseBrowser } from '@/lib/supabase/browserClient'
 
-
 export default function LandingPage() {
   const supabase = supabaseBrowser()
 

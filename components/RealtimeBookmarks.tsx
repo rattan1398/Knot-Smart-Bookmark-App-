@@ -87,7 +87,10 @@ export default function RealtimeBookmarks({
               {bm.title}
             </a>
 
-            <form action={deleteBookmark.bind(null, bm.id)}>
+            <form action={async () => {
+              removeOptimistic(bm.id);
+              await deleteBookmark(bm.id);
+            }}>
               <button className="text-red-500 cursor-pointer">Delete</button>
             </form>
           </div>

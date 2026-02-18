@@ -20,7 +20,7 @@ export default function SearchBar() {
         params.delete("query");
       }
       replace(`${pathname}?${params.toString()}`);
-    }, 300);
+    }, 200);
     setTimer(newTimer);
   };
 
