@@ -4,8 +4,8 @@ import { supabaseServer } from '@/lib/supabase/serverClient'
 import { revalidatePath } from 'next/cache'
 
 export async function addBookmark(formData: FormData) {
-  const title = formData.get('title') as string
-  const url = formData.get('url') as string
+  const title = (formData.get('title') as string).trim()
+  const url = (formData.get('url') as string).trim()
 
   const supabase = await supabaseServer()
 
