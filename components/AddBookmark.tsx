@@ -51,7 +51,7 @@ export default function AddBookmark({
       await addBookmark(formData)
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message)
+        alert('No two bookmarks can have same title')
       } else {
         alert('Failed to add bookmark')
       }
