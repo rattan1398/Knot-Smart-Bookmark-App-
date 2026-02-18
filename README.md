@@ -2,7 +2,7 @@
 
 Knot is a modern, high-performance bookmark management platform designed for professionals who need a reliable, synchronized, and aesthetically refined way to organize digital resources. It addresses the fragmentation of digital knowledge by providing a centralized, searchable, and secure repository for links. Built with a focus on speed, user experience, and visual clarity, Knot simplifies the retrieval of information across devices, making it an essential tool for developers, researchers, and knowledge workers.
 
-![Knot Landing Page](./public/landing-page.png)
+![Knot Landing Page](https://ik.imagekit.io/rattankartik708/knot.png?updatedAt=1771427964649)
 
 ## Technology Stack
 
@@ -23,7 +23,7 @@ Knot operates on a serverless, event-driven architecture designed to be stateles
 This flow ensures secure session management without maintaining server-side state.
 
 ```
-User (OAuth Login) → Next.js Middleware → Supabase Auth → Session Check → Secure Redirect → Dashboard
+User (OAuth Login) → Supabase Auth → Session Check → Secure Redirect → Dashboard
 ```
 
 ### 2. Bookmark Creation Pipeline
